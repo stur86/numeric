@@ -1,6 +1,7 @@
 #!/bin/bash
 cd `dirname $0`
 source config.sh
+
 version=`cat version.txt`
 rm -f wintests.log mactests.txt
 echo "test.sh: launching IE unit tests"
@@ -17,11 +18,11 @@ rm -f $logfile
 touch $logfile
 tail -f $logfile &
 tailpid=$!
-python -u selenium_links.py Firefox http://$server/staging/ >> $logfile 2>&1
+python -u selenium_links.py Firefox http://$server/ >> $logfile 2>&1
 echo "test.sh: Mac/Chrome unit tests on $server/staging"
-python -u selenium_tests.py Chrome http://$server/staging/ >> $logfile 2>&1
+python -u selenium_tests.py Chrome http://$server/ >> $logfile 2>&1
 echo "test.sh: Mac/Firefox unit tests on $server/staging"
-python -u selenium_tests.py Firefox http://$server/staging/ >> $logfile 2>&1
+python -u selenium_tests.py Firefox http://$server/ >> $logfile 2>&1
 kill -9 $tailpid
 echo "test.sh: making report"
 cd deploy

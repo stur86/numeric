@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 import time
 import traceback
 import sys
@@ -17,7 +18,7 @@ def test(links,driver):
         foo = ""
         t=t+1
         try:
-            link = driver.find_element_by_id(x[0])
+            link = driver.find_element(By.ID, x[0])
             link.click()
             time.sleep(3)
             foo = driver.page_source
@@ -43,18 +44,18 @@ if url == "":
     url = "http://127.0.0.1/staging/"
 
 mainlinks = [("linkhome","Numerical analysis in Javascript"),
-             ("linkworkshop","IN"),
              ("linkdoc","vectors and matrices"),
              ("linklib","var numeric"),
              ("linklibmin","var numeric="),]
 driver=0
 print("Link testing.")
 try:
-    driver = eval('webdriver.'+client+'()')
+    # Create the driver
+    driver = getattr(webdriver,client)()
     print("Using",client)
     driver.implicitly_wait(10)
     driver.get(url)
-    time.sleep(1);
+    time.sleep(1)
     test(mainlinks,driver)
     driver.quit()
 except:

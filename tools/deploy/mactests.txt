@@ -1,15 +1,20 @@
 Link testing.
-Using Firefox
 Could not do browser Firefox
-Fetching http://numericjs.com/staging/documentation.html
+Fetching http://127.0.0.1:3000/documentation.html
 Traceback (most recent call last):
-  File "/home/simon/numeric/tools/selenium_tests.py", line 51, in <module>
-    njs = urllib.urlopen(u0).read()
-          ^^^^^^^^^^^^^^
-AttributeError: module 'urllib' has no attribute 'urlopen'
-Fetching http://numericjs.com/staging/documentation.html
+  File "/home/simon/numeric/tools/selenium_tests.py", line 53, in <module>
+    y = re.findall(r'<pre>[\s\S]*?(?=<\/pre>)',njs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/re/__init__.py", line 216, in findall
+    return _compile(pattern, flags).findall(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot use a string pattern on a bytes-like object
+Fetching http://127.0.0.1:3000/documentation.html
 Traceback (most recent call last):
-  File "/home/simon/numeric/tools/selenium_tests.py", line 51, in <module>
-    njs = urllib.urlopen(u0).read()
-          ^^^^^^^^^^^^^^
-AttributeError: module 'urllib' has no attribute 'urlopen'
+  File "/home/simon/numeric/tools/selenium_tests.py", line 53, in <module>
+    y = re.findall(r'<pre>[\s\S]*?(?=<\/pre>)',njs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/re/__init__.py", line 216, in findall
+    return _compile(pattern, flags).findall(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot use a string pattern on a bytes-like object

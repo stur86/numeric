@@ -1,10 +1,11 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 import time
 import traceback
 import sys
-import urllib
+import urllib.request
 import re
 
 def test(name,driver):
@@ -16,11 +17,11 @@ def test(name,driver):
             t=t+1
             foo = ""
             try:
-                input = driver.find_element_by_id("text_"+str(k+1))
+                input = driver.find_element(By.ID, "text_"+str(k+1))
                 input.send_keys(tests[k][0]+'\n')
                 bar = "out_"+str(k+1)
-                WebDriverWait(driver,5).until(lambda driver: driver.find_element_by_id(bar).text not in ["","<img src=\"resources/wait16.gif\">"])
-                output = driver.find_element_by_id(bar)
+                WebDriverWait(driver,5).until(lambda driver: driver.find_element(By.ID, bar).text not in ["","<img src=\"resources/wait16.gif\">"])
+                output = driver.find_element(By.ID, bar)
                 foo = re.sub(r'\s','',output.text)
                 if(tests[k][1][0:6]=="Error:"):
                     foo = foo[0:len(tests[k][1])]
@@ -48,9 +49,9 @@ if url == "":
 
 u0 = url + 'documentation.html'
 print('Fetching',u0)
-njs = urllib.urlopen(u0).read()
+njs = urllib.request.urlopen(u0).read()
 y = re.findall(r'<pre>[\s\S]*?(?=<\/pre>)',njs)
-tests = [];
+tests = []
 
 print("In-browser unit tests.")
 for x in y:
@@ -65,7 +66,7 @@ try:
     driver.implicitly_wait(2)
     driver.get(url+'workshop.php')
     try:
-        WebDriverWait(driver, 30).until(lambda driver : driver.find_element_by_id("text_1"))
+        WebDriverWait(driver, 30).until(lambda driver : driver.find_element(By.ID, "text_1"))
         test(client,driver)
     except Exception as ex:
         print("FAIL: text_1 not found. ",ex)
