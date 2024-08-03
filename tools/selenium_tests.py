@@ -45,11 +45,11 @@ else:
     client = "Firefox"
 
 if url == "":
-    url = "http://127.0.0.1/staging/"
+    url = "http://127.0.0.1:3000/"
 
 u0 = url + 'documentation.html'
 print('Fetching',u0)
-njs = urllib.request.urlopen(u0).read()
+njs = urllib.request.urlopen(u0).read().decode('utf-8')
 y = re.findall(r'<pre>[\s\S]*?(?=<\/pre>)',njs)
 tests = []
 

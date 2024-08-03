@@ -1,5 +1,10 @@
 Link testing.
-Could not do browser Firefox
+Using Firefox
+0 PASS: linkhome ==> Numerical analysis in Javascript in page
+1 PASS: linkdoc ==> vectors and matrices in page
+2 PASS: linklib ==> var numeric in page
+3 PASS: linklibmin ==> var numeric= in page
+Link testing complete. PASS: 4 FAIL: 0 Total: 4
 Fetching http://127.0.0.1:3000/documentation.html
 Traceback (most recent call last):
   File "/home/simon/numeric/tools/selenium_tests.py", line 53, in <module>
