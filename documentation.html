@@ -177,7 +177,13 @@ OUT> 0.2694
 <br>
 <h1>Numerical analysis in Javascript</h1>
 
-<a href="http://www.numericjs.com/">Numeric Javascript</a> is
+<script>
+    function workshopError() {
+        alert('The Workshop is not available in this version of the documentation.');
+    }
+</script>
+
+<a href="./index.html">Numeric Javascript</a> is
 library that provides many useful functions for numerical
 calculations, particularly for linear algebra (vectors and matrices).
 You can create vectors and matrices and multiply them:
@@ -191,7 +197,7 @@ IN> numeric.dot(A,x);
 OUT> [50,122]
 </pre>
 The example shown above can be executed in the
-<a href="http://www.numericjs.com/workshop.php">Javascript Workshop</a> or at any
+<a role="button" onclick="workshopError()">Javascript Workshop</a> or at any
 Javascript prompt. The Workshop provides plotting capabilities:<br>
 <img src="resources/workshop.png"><br>
 The function <tt>workshop.plot()</tt> is essentially the <a href="http://code.google.com/p/flot/">flot</a>
@@ -232,7 +238,7 @@ OUT> [[-0.9286,0.3571,0.07143],
 The function <tt>numeric.prettyPrint()</tt> is used to print most of the examples in this documentation.
 It formats objects, arrays and numbers so that they can be understood easily. All output is automatically
 formatted using <tt>numeric.prettyPrint()</tt> when in the
-<a href="http://www.numericjs.com/workshop.php">Workshop</a>. In order to present the information clearly and
+<a role="button" onclick="workshopError()">Workshop</a>. In order to present the information clearly and
 succintly, the function <tt>numeric.prettyPrint()</tt> lays out matrices so that all the numbers align.
 Furthermore, numbers are given approximately using the <tt>numeric.precision</tt> variable:
 <pre>

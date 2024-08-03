@@ -146,3 +146,34 @@ footer {
 footer a {
 	color: #ccffff;
 }
+
+.warning {
+	border: 1px solid black;
+	background-color: #ffff88;
+	padding: 10px;
+	margin: 15px 0px;
+}
+
+.main-column {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	--col-width: 700px;
+}
+
+.main-column h1 {
+	text-align: center;
+	width: var(--col-width);
+}
+
+.main-column p {
+	max-width: var(--col-width);
+	text-align: justify;
+}
+
+a[role="button"] {
+	color: #0000ff;
+	text-decoration: underline;
+	cursor: pointer;
+}

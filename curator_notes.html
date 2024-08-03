@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="SHORTCUT ICON" href="./favicon.ico">
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href="resources/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="main-column">
+            <h1>Notes</h1>
+            <p>I used <tt>numeric.js</tt> for the first time early on in my first job in scientific computing;
+                at the time, I even used it to code a simple web app performing 1-dimensional
+                quantum mechanics <a href="https://github.com/stur86/JSDFT">Density Functional Theory calculations</a>.
+            </p>
+            <p>
+                Needless to say, I was deeply impressed by how incredibly performant and efficient
+                the library was, given the context it was running in. There's a certain rare art
+                to writing code that squeezes every drop of performance from even very limited platforms,
+                and I always felt like this library embodies it perfectly. Nowadays the ease of use of GPUs
+                even on the web have reduced its usefulness, 
+                but I still think there may be room for it as an extremely simple and immediate tool for 
+                any applications that require numerical computations in the browser.
+            </p>
+            <p>
+                Unfortunately, the library has long been abandoned. I do not know what has happened - real
+                life has gotten in the way, I suppose. But the last commits date back to 12 years ago. Since then, a lot
+                has changed, and the code of the repository has been slowly succumbing to rot. The website at
+                <tt>numericjs.com</tt>, likewise, has not been renewed any more, and since it relies on PHP to work, it's impossible to rehost it without
+                paying for a server.
+            </p>
+            <p>
+            The javascript code itself, however, still works fine, and is in fact still hosted on NPM. Therefore I've long
+            wanted to try and bring back at least the documentation, for convenience of any users if nothing else,
+            using the GitHub Pages feature. This is the result of that effort.
+            </p>
+            <p>
+                If I have the chance, I hope to do something better. I think it would be nice to have a complete
+                overhaul of the library, using new technologies to provide well-maintainable and automated testing, 
+                documentation generation, and so on - as long as it doesn't interfere with its performance. But for 
+                now, this was the simplest and quickest intervention I could make.
+            </p>
+            <p>
+                Hopefully, this will be of use to anyone looking - for whatever reason - to diagonalize matrices and solve linear systems 
+                in a single JavaScript thread! Admittedly a niche market, but having been part of it in the past, I can say with confidence it must exist.
+            </p>
+            <p>
+                <b>Simone Sturniolo</b> - <i>03/08/2024</i>
+            </p>
+            <a href="index.html">Back to the main page</a>
+        </div>
+    </body>
+</html>
