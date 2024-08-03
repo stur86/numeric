@@ -1,8 +1,8 @@
 <?php
 
 function con() {
-    mysql_connect() or die('Could not connect: '.mysql_error);
-    mysql_select_db('sloisel_numeric') or die('Could not select db: ' . mysql_error());
+    mysqli_connect() or die('Could not connect: '.mysqli_error);
+    mysqli_select_db('sloisel_numeric') or die('Could not select db: ' . mysqli_error());
 }
 con();
 
@@ -13,9 +13,9 @@ if(isset($_POST['savedata'])) {
 	json_decode($data) or die("json error");
 	$f = hash('sha256',$data);
 	if($f === "") { exit; }
-	$d = mysql_real_escape_string($data);
+	$d = mysqli_real_escape_string($data);
 	$q = "insert ignore into blobs value ('$f','$d')";
-	$result = mysql_query($q) or die('Could not save script: ' . mysql_error());
+	$result = mysqli_query($q) or die('Could not save script: ' . mysqli_error());
 	header('Location: workshop.php?link=' . $_GET['link']);
 	exit;
 }
@@ -468,8 +468,8 @@ if(isset($_GET['link'])) {
 	$f = $_GET['link'];
 	if(!preg_match('/^[0-9a-fA-F]*$/',$f)) { exit; }
 	$q = "select v from blobs where k = '".$f."'";
-	$result = mysql_query($q) or die('Could not fetch script: ' . mysql_error());
-	$s = mysql_fetch_row($result) or die ('Could not fetch field: ' . mysql_error());
+	$result = mysqli_query($q) or die('Could not fetch script: ' . mysqli_error());
+	$s = mysqli_fetch_row($result) or die ('Could not fetch field: ' . mysqli_error());
 	$restore = $s[0];
 	$foo = json_decode($restore,true) or die("json error");
 	$incs = $foo['scripts'];
