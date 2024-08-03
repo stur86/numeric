@@ -2,7 +2,8 @@ import sys
 import re
 import time
 
-print """
+print("""
+<!DOCTYPE html>
 <html>
 <head>
 <title>Report for v"""+sys.argv[1]+"""</title>
@@ -17,18 +18,18 @@ td {
 <tr><td>
 <font size="+2">Mac unit tests """+sys.argv[1]+"""</font>
 </td></tr><tr><td>
-"""
+""")
 
 out = open('mactests.txt','r').read()
 foo = re.sub(r'\n([0-9]+ PASS:)',r'</td></tr><tr bgcolor="#a0ffa0"><td>\1',out)
 bar = re.sub(r'\n([0-9]+ FAIL:)',r'</td></tr><tr bgcolor="#ff2020"><td>\1',foo)
 baz = re.sub(r'\n(.* testing complete. PASS:)',r'</td></tr><tr bgcolor="#a0a0ff"><td>\1',bar)
-print baz
-print """
+print(baz)
+print("""
 </td></tr><tr><td>
 <font size="+2">Windows unit tests """+sys.argv[1]+"""</font>
 </td></tr><tr><td>
-"""
+""")
 out = 0
 for k in range(60):
     try:
@@ -37,13 +38,13 @@ for k in range(60):
     except:
         time.sleep(10)
 if out==0:
-    print """</td></tr><tr bgcolor="#ff2020"><td>FAIL: Window testing suite has failed."""
+    print("""</td></tr><tr bgcolor="#ff2020"><td>FAIL: Window testing suite has failed.""")
 else:
     foo = re.sub(r'\n([0-9]+ PASS:)',r'</td></tr><tr bgcolor="#a0ffa0"><td>\1',out)
     bar = re.sub(r'\n([0-9]+ FAIL:)',r'</td></tr><tr bgcolor="#ff2020"><td>\1',foo)
     baz = re.sub(r'\n(.* testing complete. PASS:)',r'</td></tr><tr bgcolor="#a0a0ff"><td>\1',bar)
-    print baz
+    print(baz)
 
-print """
+print("""
 </td></tr></table>
-"""
+""")

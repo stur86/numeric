@@ -26,14 +26,14 @@ def test(name,driver):
                 if(tests[k][1][0:6]=="Error:"):
                     foo = foo[0:len(tests[k][1])]
                 assert(foo == tests[k][1])
-                print k,"PASS:",tests[k][0],'==>',foo
+                print(k,"PASS:",tests[k][0],'==>',foo)
                 p=p+1
             except Exception as ex:
-                print k,"FAIL:",tests[k][0],'==>',foo,"reason:",ex
+                print(k,"FAIL:",tests[k][0],'==>',foo,"reason:",ex)
                 f=f+1
-        print name,'testing complete. PASS:',p,'FAIL:',f,'Total:',t
+        print(name,'testing complete. PASS:',p,'FAIL:',f,'Total:',t)
     except:
-        print "FAIL: "+name+" selenium tests. Details:"
+        print("FAIL: "+name+" selenium tests. Details:")
         traceback.print_exc()
 
 url = ""
@@ -47,15 +47,15 @@ else:
 if url == "":
     url = "http://127.0.0.1/staging/"
 
-print "Basic functionality test."
+print("Basic functionality test.")
 driver=0
 try:
     driver = eval('webdriver.'+client+'()')
-    print "Using",client
+    print("Using",client)
     driver.implicitly_wait(2)
     driver.get(url+'workshop.php')
     test(client,driver)
 except:
-    print "Could not use browser",client
+    print("Could not use browser",client)
 if(driver):
     driver.quit()

@@ -42,8 +42,8 @@ numeric.QP([[1,0],[0,2]],[-2,-2],[[1,1]],[1]);'''
 def mkdemo(driver):
     try:
         for k in range(len(demo)):
-            print 'Command',k,':'
-            print demo[k]
+            print('Command',k,':')
+            print(demo[k])
             input = driver.find_element_by_id("in"+str(k))
             foo = demo[k].split('\n')
             for j in range(len(foo)):
@@ -54,7 +54,7 @@ def mkdemo(driver):
         pl = driver.find_element_by_id("permalink")
         pl.click()
     except:
-        print "FAIL. Cannot create demo."
+        print("FAIL. Cannot create demo.")
 
 if len(sys.argv) > 1:
     url = sys.argv[1]
@@ -67,9 +67,9 @@ for x in names:
     try:
         driver = eval('webdriver.'+x+'()')
     except:
-        print 'Skipping',x
+        print('Skipping',x)
         continue
-    print 'Using',x
+    print('Using',x)
     try:
         driver.get(url)
         mkdemo(driver)
@@ -81,8 +81,8 @@ for x in names:
     done = 1
     break
 if done:
-    print 'Fetching demo.html at ',url
+    print('Fetching demo.html at ',url)
     urllib.urlretrieve(url,demopath+'/demo.html')
 else:
-    print 'Could not generate demo.'
-print 'Done.'
+    print('Could not generate demo.')
+print('Done.')

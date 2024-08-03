@@ -42,3 +42,6 @@ ehthumbs.db
 Icon
 Thumbs.db
 .settings
+
+# Python virtual environment
+tools/.venv

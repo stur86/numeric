@@ -25,14 +25,14 @@ def test(name,driver):
                 if(tests[k][1][0:6]=="Error:"):
                     foo = foo[0:len(tests[k][1])]
                 assert(foo == tests[k][1])
-                print k,"PASS:",tests[k][0],'==>',foo
+                print(k,"PASS:",tests[k][0],'==>',foo)
                 p=p+1
             except Exception as ex:
-                print k,"FAIL:",tests[k][0],'==>',foo,"reason:",str(ex)
+                print(k,"FAIL:",tests[k][0],'==>',foo,"reason:",str(ex))
                 f=f+1
-        print name,'testing complete. PASS:',p,'FAIL:',f,'Total:',t
+        print(name,'testing complete. PASS:',p,'FAIL:',f,'Total:',t)
     except:
-        print "FAIL: "+name+" selenium tests. Details:"
+        print("FAIL: "+name+" selenium tests. Details:")
         traceback.print_exc()
 
 url = ""
@@ -47,12 +47,12 @@ if url == "":
     url = "http://127.0.0.1/staging/"
 
 u0 = url + 'documentation.html'
-print 'Fetching',u0
+print('Fetching',u0)
 njs = urllib.urlopen(u0).read()
 y = re.findall(r'<pre>[\s\S]*?(?=<\/pre>)',njs)
 tests = [];
 
-print "In-browser unit tests."
+print("In-browser unit tests.")
 for x in y:
     baz = x.split('\nIN> ')[1:]
     for foo in baz:
@@ -61,16 +61,16 @@ for x in y:
 driver=0
 try:
     driver = eval('webdriver.'+client+'()')
-    print "Using",client
+    print("Using",client)
     driver.implicitly_wait(2)
     driver.get(url+'workshop.php')
     try:
         WebDriverWait(driver, 30).until(lambda driver : driver.find_element_by_id("text_1"))
         test(client,driver)
     except Exception as ex:
-        print "FAIL: text_1 not found. ",ex
+        print("FAIL: text_1 not found. ",ex)
 except Exception as ex:
-    print "Could not use browser",client
-    print ex
+    print("Could not use browser",client)
+    print(ex)
 if(driver):
     driver.quit()
